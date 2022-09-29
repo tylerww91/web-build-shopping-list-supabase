@@ -3,7 +3,7 @@
 import './auth/user.js';
 
 import { createItem } from './fetch-utils.js';
-// import { getItem } from './fetch-utils.js';
+import { getItem } from './fetch-utils.js';
 import { renderItem } from './render-utils.js';
 import { boughtItem } from './fetch-utils.js';
 
@@ -16,6 +16,20 @@ const itemList = document.getElementById('item-list');
 let items = [];
 let error = null;
 /* Events */
+
+window.addEventListener('load', async () => {
+    const response = await getItem();
+    error = response.error;
+    items = response.data;
+
+    if (error) {
+        displayError();
+    }
+
+    if (items) {
+        displayItem();
+    }
+});
 
 addItemForm.addEventListener('submit', async (e) => {
     e.preventDefault();
