@@ -1,0 +1,21 @@
+main {
+    display: flex;
+    flex-direction: column;
+    width: 400px;
+    margin: 50px auto;
+}
+
+#add-item-section {
+    background: purple;
+    display: flex;
+}
+
+#quantity-input {
+    width: 20px;
+    margin: 10px auto;
+    text-align: center;
+}
+
+#item-input {
+    text-align: center;
+}
