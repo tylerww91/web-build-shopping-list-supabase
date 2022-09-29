@@ -32,3 +32,7 @@ export async function signOutUser() {
 export async function createItem(item) {
     return await client.from('lists').insert(item).single();
 }
+
+export async function getItem() {
+    return await client.from('lists').select('*').order('created_at');
+}
