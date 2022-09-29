@@ -6,11 +6,13 @@ import { createItem } from './fetch-utils.js';
 import { getItem } from './fetch-utils.js';
 import { renderItem } from './render-utils.js';
 import { boughtItem } from './fetch-utils.js';
+import { deleteAllItems } from './fetch-utils.js';
 
 /* Get DOM Elements */
 const addItemForm = document.getElementById('add-item-form');
 const errorDisplay = document.getElementById('error-display');
 const itemList = document.getElementById('item-list');
+const removeAllButton = document.getElementById('remove-all-button');
 
 /* State */
 let items = [];
@@ -49,6 +51,19 @@ addItemForm.addEventListener('submit', async (e) => {
     } else {
         items.push(item);
         addItemForm.reset();
+        displayItem();
+    }
+});
+
+removeAllButton.addEventListener('click', async () => {
+    const response = await deleteAllItems();
+
+    error = response.error;
+
+    if (error) {
+        displayError();
+    } else {
+        items = [];
         displayItem();
     }
 });
