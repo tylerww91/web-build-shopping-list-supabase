@@ -3,8 +3,9 @@
 import './auth/user.js';
 
 import { createItem } from './fetch-utils.js';
-import { getItem } from './fetch-utils.js';
+// import { getItem } from './fetch-utils.js';
 import { renderItem } from './render-utils.js';
+import { boughtItem } from './fetch-utils.js';
 
 /* Get DOM Elements */
 const addItemForm = document.getElementById('add-item-form');
@@ -55,8 +56,18 @@ function displayItem() {
         const itemEl = renderItem(item);
         itemList.append(itemEl);
 
-        // itemEl.addEventListener('click', async () => {
-        //     const response =
-        // });
+        itemEl.addEventListener('click', async () => {
+            const response = await boughtItem(item.id);
+            error = response.error;
+            const updatedItem = response.data;
+
+            if (error) {
+                displayError();
+            } else {
+                const index = items.indexOf(item);
+                items[index] = updatedItem;
+                displayItem();
+            }
+        });
     }
 }

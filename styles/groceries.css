@@ -19,3 +19,11 @@ main {
 #item-input {
     text-align: center;
 }
+
+li > img {
+    height: 25px;
+}
+
+.bought {
+    text-decoration-line: line-through;
+}

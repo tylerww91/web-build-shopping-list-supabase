@@ -33,6 +33,10 @@ export async function createItem(item) {
     return await client.from('lists').insert(item).single();
 }
 
-export async function getItem() {
-    return await client.from('lists').select('*').order('created_at');
+// export async function getItem() {
+//     return await client.from('lists').select('*').order('created_at');
+// }
+
+export async function boughtItem(id) {
+    return await client.from('lists').update({ bought: true }).eq('id', id).single();
 }
