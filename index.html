@@ -1,48 +1,87 @@
 <!DOCTYPE html>
 <html lang="en">
+    <head>
+        <!-- metadata -->
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta http-equiv="X-UA-Compatible" content="ie=edge" />
 
-<head>
-    <!-- metadata -->
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+        <!-- title and favicon -->
+        <title>Supabase Web App</title>
+        <link rel="icon" type="image/x-icon" href="/assets/alchemy-favicon.png" />
 
-    <!-- title and favicon -->
-    <title>Supabase Web App</title>
-    <link rel="icon" type="image/x-icon" href="/assets/alchemy-favicon.png" />
+        <!-- js -->
+        <script defer src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
+        <script type="module" src="app.js"></script>
 
-    <!-- js -->
-    <script defer src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
-    <script type="module" src="app.js"></script>
+        <!-- fonts -->
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap"
+            rel="stylesheet"
+        />
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link
+            rel="stylesheet"
+            href="https://fonts.googleapis.com/css2?family=Rubik:wght@300;400;600&family=Titillium+Web:wght@200;400;600&display=swap"
+        />
 
-    <!-- fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="stylesheet"
-        href="https://fonts.googleapis.com/css2?family=Rubik:wght@300;400;600&family=Titillium+Web:wght@200;400;600&display=swap">
+        <!-- css -->
+        <link rel="stylesheet" href="/styles/groceries.css" />
+        <link rel="stylesheet" href="/styles/reset.css" />
+        <link rel="stylesheet" href="/styles/global.css" />
+        <!-- add link for page specific css -->
+    </head>
 
+    <body>
+        <header class="page-header">
+            <img class="logo" src="/assets/grocery-store.png" alt="logo" />
+            <p class="title">Grocery List App</p>
+            <img class="logo" src="/assets/milk.png" alt="logo" />
+            <img class="logo" src="/assets/shopping-bag.png" alt="logo" />
 
-    <!-- css -->
-    <link rel="stylesheet" href="/styles/reset.css" />
-    <link rel="stylesheet" href="/styles/global.css" />
-    <!-- add link for page specific css -->
+            <nav>
+                <a href="/">Home</a>
+                <a id="sign-out-link" href="auth">Sign Out</a>
+            </nav>
+            <img class="logo" src="/assets/grocery-cart.png" alt="logo" />
+        </header>
 
-</head>
+        <main>
+            <section id="add-item-section">
+                <form id="add-item-form">
+                    <div id="inputs-container">
+                        <input
+                            id="item-input"
+                            name="item"
+                            required
+                            placeholder="add an item to your list"
+                        />
+                        <input id="quantity-input" name="quantity" required placeholder="#" />
+                    </div>
+                    <div class="button-div">
+                        <button id="add-button" class="button">🥦 Add 🥦</button>
+                    </div>
+                </form>
 
-<body>
-    <header class="page-header">
-        <img class="logo" src="/assets/html_css_js.png" alt="logo">
-        <p class="title">Supabase Web App</p>
-        <nav>
-            <a href="/">Home</a>
-            <a id="sign-out-link" href="auth">Sign Out</a>
-        </nav>
-    </header>
+                <div class="button-div">
+                    <button id="remove-bought-button">💸 Remove bought items 🧾</button>
+                    <button id="remove-all-button">🗑️ Remove all items 🗑️</button>
+                    <p id="error-display" class="error"></p>
+                </div>
+            </section>
 
-    <main>
-
-    </main>
-
-</body>
-
+            <div class="container">
+                <div class="list-box">
+                    <h4>
+                        Click to check an item off your grocery list<br />Click the "-" button to
+                        remove item
+                    </h4>
+                    <ul id="item-list"></ul>
+                </div>
+            </div>
+        </main>
+    </body>
 </html>
