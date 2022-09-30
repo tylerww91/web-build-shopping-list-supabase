@@ -63,14 +63,14 @@ li > img {
 
 #remove-bought-button {
     height: 25px;
-    width: 180px;
+    width: 182px;
     background-color: rgb(179, 165, 86);
     border-radius: 10px;
 }
 
 #remove-all-button {
     height: 25px;
-    width: 180px;
+    width: 182px;
     background-color: rgb(150, 66, 66);
     border-radius: 10px;
 }
