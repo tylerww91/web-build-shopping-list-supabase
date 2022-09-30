@@ -7,13 +7,14 @@ import { getItem } from './fetch-utils.js';
 import { renderItem } from './render-utils.js';
 import { boughtItem } from './fetch-utils.js';
 import { deleteAllItems } from './fetch-utils.js';
+import { deleteBoughtItems } from './fetch-utils.js';
 
 /* Get DOM Elements */
 const addItemForm = document.getElementById('add-item-form');
 const errorDisplay = document.getElementById('error-display');
 const itemList = document.getElementById('item-list');
 const removeAllButton = document.getElementById('remove-all-button');
-
+const removeBoughtButton = document.getElementById('remove-bought-button');
 /* State */
 let items = [];
 let error = null;
@@ -64,6 +65,26 @@ removeAllButton.addEventListener('click', async () => {
         displayError();
     } else {
         items = [];
+        displayItem();
+    }
+});
+
+removeBoughtButton.addEventListener('click', async () => {
+    const response = await deleteBoughtItems();
+
+    error = response.error;
+
+    if (error) {
+        displayError();
+    } else {
+        const notBoughtItems = [];
+        for (const item of items) {
+            if (!item.bought) {
+                notBoughtItems.push(item);
+            }
+        }
+        items = notBoughtItems;
+
         displayItem();
     }
 });

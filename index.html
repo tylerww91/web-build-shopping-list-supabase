@@ -18,6 +18,12 @@
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
         <link
+            href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap"
+            rel="stylesheet"
+        />
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link
             rel="stylesheet"
             href="https://fonts.googleapis.com/css2?family=Rubik:wght@300;400;600&family=Titillium+Web:wght@200;400;600&display=swap"
         />
@@ -31,8 +37,8 @@
 
     <body>
         <header class="page-header">
-            <img class="logo" src="/assets/html_css_js.png" alt="logo" />
-            <p class="title">Supabase Web App</p>
+            <img class="logo" src="/assets/milk.png" alt="logo" />
+            <p class="title">Grocery List App</p>
             <nav>
                 <a href="/">Home</a>
                 <a id="sign-out-link" href="auth">Sign Out</a>
@@ -51,18 +57,23 @@
                         />
                         <input id="quantity-input" name="quantity" required placeholder="#" />
                     </div>
-                    <button>Add</button>
+                    <div class="button-div">
+                        <button class="button">Add</button>
+                    </div>
                 </form>
 
-                <!-- <div class="container"> -->
-                <button id="remove-all-button">Remove my items</button>
-                <p id="error-display" class="error"></p>
-                <!-- </div> -->
+                <div class="button-div">
+                    <button id="remove-bought-button">Remove bought items</button>
+                    <button id="remove-all-button">Remove all items</button>
+                    <p id="error-display" class="error"></p>
+                </div>
             </section>
 
             <div class="container">
-                <p>click to check an item off your grocery list</p>
-                <ul id="item-list"></ul>
+                <div class="list-box">
+                    <p>click to check an item off your grocery list</p>
+                    <ul id="item-list"></ul>
+                </div>
             </div>
         </main>
     </body>

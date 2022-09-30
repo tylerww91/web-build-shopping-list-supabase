@@ -15,7 +15,8 @@ body {
     height: 100vh;
     font-family: var(--primary-font);
     color: var(--text-color);
-    background: var(--background);
+    /* background: var(--background); */
+    background-image: url(/assets/Grocery\ aisle.jpg);
     display: grid;
     grid-template-rows: auto 1fr;
 }
