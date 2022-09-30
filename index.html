@@ -37,12 +37,16 @@
 
     <body>
         <header class="page-header">
-            <img class="logo" src="/assets/milk.png" alt="logo" />
+            <img class="logo" src="/assets/grocery-store.png" alt="logo" />
             <p class="title">Grocery List App</p>
+            <img class="logo" src="/assets/milk.png" alt="logo" />
+            <img class="logo" src="/assets/shopping-bag.png" alt="logo" />
+
             <nav>
                 <a href="/">Home</a>
                 <a id="sign-out-link" href="auth">Sign Out</a>
             </nav>
+            <img class="logo" src="/assets/grocery-cart.png" alt="logo" />
         </header>
 
         <main>
@@ -58,20 +62,23 @@
                         <input id="quantity-input" name="quantity" required placeholder="#" />
                     </div>
                     <div class="button-div">
-                        <button class="button">Add</button>
+                        <button id="add-button" class="button">🥦 Add 🥦</button>
                     </div>
                 </form>
 
                 <div class="button-div">
-                    <button id="remove-bought-button">Remove bought items</button>
-                    <button id="remove-all-button">Remove all items</button>
+                    <button id="remove-bought-button">💸 Remove bought items 🧾</button>
+                    <button id="remove-all-button">🗑️ Remove all items 🗑️</button>
                     <p id="error-display" class="error"></p>
                 </div>
             </section>
 
             <div class="container">
                 <div class="list-box">
-                    <p>click to check an item off your grocery list</p>
+                    <h4>
+                        Click to check an item off your grocery list<br />Click the "-" button to
+                        remove item
+                    </h4>
                     <ul id="item-list"></ul>
                 </div>
             </div>

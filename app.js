@@ -8,6 +8,7 @@ import { renderItem } from './render-utils.js';
 import { boughtItem } from './fetch-utils.js';
 import { deleteAllItems } from './fetch-utils.js';
 import { deleteBoughtItems } from './fetch-utils.js';
+import { deleteSelectedItem } from './fetch-utils.js';
 
 /* Get DOM Elements */
 const addItemForm = document.getElementById('add-item-form');
@@ -15,16 +16,22 @@ const errorDisplay = document.getElementById('error-display');
 const itemList = document.getElementById('item-list');
 const removeAllButton = document.getElementById('remove-all-button');
 const removeBoughtButton = document.getElementById('remove-bought-button');
+
+// const selectRemovebtn = document.querySelectorAll('.select-remove-btn');
 /* State */
 let items = [];
 let error = null;
 /* Events */
 
-window.addEventListener('load', async () => {
+async function fetchData() {
+    // this is how we fetch our data from our back end
     const response = await getItem();
     error = response.error;
     items = response.data;
+}
 
+window.addEventListener('load', async () => {
+    await fetchData();
     if (error) {
         displayError();
     }
@@ -116,6 +123,22 @@ function displayItem() {
             } else {
                 const index = items.indexOf(item);
                 items[index] = updatedItem;
+                displayItem();
+            }
+        });
+
+        const btn = document.createElement('button'); //this can be used seperate from the renderfunction
+        btn.textContent = '-';
+        btn.classList.add('select-remove-btn');
+        itemList.append(btn);
+
+        btn.addEventListener('click', async () => {
+            const response = await deleteSelectedItem(item.id);
+            error = response.error;
+            if (error) {
+                displayError();
+            } else {
+                await fetchData();
                 displayItem();
             }
         });
